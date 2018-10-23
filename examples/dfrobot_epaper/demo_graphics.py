@@ -3,7 +3,7 @@
 file demo_graphics.py
 
 connect epaper to your raspberryPi
-basic graphics demo
+basic graphics demo, such as line, rectangle, triangle, circle and pixel
 
 Copyright   [DFRobot](http://www.dfrobot.com), 2016
 Copyright   GNU Lesser General Public License
@@ -33,6 +33,9 @@ epaper.clear(epaper.WHITE)
 epaper.flush(epaper.FULL)
 epaper.setLineWidth(3)
 time.sleep(1)
+
+for i in range(10, 50):
+  epaper.pixel(10, i * 2, epaper.BLACK)
 
 epaper.line(20, 20, 20, 100, epaper.BLACK)
 epaper.line(40, 20, 60, 100, epaper.BLACK)

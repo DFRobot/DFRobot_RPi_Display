@@ -51,4 +51,7 @@ epaper.printStr("BCA都成ABC")
 epaper.flush(epaper.PART)
 time.sleep(1)
 
+epaper.setTextCursor(0, 16)
+epaper.printStr(15, epaper.HEX)
 epaper.flush(epaper.PART)
+time.sleep(1)

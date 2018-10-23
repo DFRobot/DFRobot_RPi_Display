@@ -3,7 +3,7 @@
 file demo_bitmap.ino
 
 connect epaper to your raspberryPi
-bitmap file demo
+bitmap file demo, epaper only support bitmap file that color bitcounts = 1
 
 Copyright   [DFRobot](http://www.dfrobot.com), 2016
 Copyright   GNU Lesser General Public License

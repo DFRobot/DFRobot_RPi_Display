@@ -54,7 +54,7 @@ driver for device
 select driver that you need
 </pre>
 ### dfrobot_display
-library base, must download
+library base, all must download
 ### dfrobot_interface_raspberry
 interface for raspberry
 ### display_extension
