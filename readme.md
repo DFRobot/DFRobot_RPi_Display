@@ -387,10 +387,10 @@ class DFRobot_Display:
   DEC = lambda x : str(x)
   HEX = hex
 
-  def printStr(self, c, num = DEC):
+  def printStr(self, c):
   '''
     print object
-    @param c        object, if c is number, num can set to format
+    @param c        string
   '''
 
   def printStrLn(self, c, num = DEC):

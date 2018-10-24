@@ -52,6 +52,5 @@ epaper.flush(epaper.PART)
 time.sleep(1)
 
 epaper.setTextCursor(0, 16)
-epaper.printStr(15, epaper.HEX)
-epaper.flush(epaper.PART)
+epaper.printStr(hex(15))
 time.sleep(1)
