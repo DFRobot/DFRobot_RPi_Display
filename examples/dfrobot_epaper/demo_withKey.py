@@ -69,7 +69,9 @@ epaper.setText(2, epaper.BLACK, epaper.WHITE, 0, 0) # set text size, color, back
 keyCount = 0
 timeCount = 0
 # key test
-epaper.printStr("with key test")
+epaper.printStr("key test")
+epaper.flush(epaper.PART)
+epaper.setTextCursor(0, 32)
 while True:
   if haveKeyA:
     keyCount += 1
@@ -84,6 +86,8 @@ while True:
   if keyCount >= 16:
     keyCount = 0
     epaper.clear(epaper.WHITE)
+    epaper.setTextCursor(0, 0)
+    epaper.printStr("key test")
     epaper.flush(epaper.PART)
     epaper.setTextCursor(0, 32) # set text cursor to origin
   time.sleep(0.01)
