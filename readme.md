@@ -137,32 +137,32 @@ class DFRobot_Display:
   BIMTAP_RLMBLT = "RLMBLT"  # scan with column, right to left, msb to bottom, lsb to top
   BITMAP_UNKNOW = "UNKNOW"  # unknow bitmap scan type
 
-  def __init__(self, width, height):
   '''
     init class
     @param width        screen width
            height       screen height
   '''
+  def __init__(self, width, height):
+  
 
-  def setColorTo16(self):
   '''
     set color to format RBG565
     use for lcd
   '''
+  def setColorTo16(self):
 
-  def setColorTo24(self):
   '''
     set color to format RBG888
     use for lcd
   '''
-
-  def setLineWidth(self, w):
+  def setColorTo24(self):
+  
   '''
     set line width
     @param w        line width
   '''
+  def setLineWidth(self, w):
 
-  def setText(self, size, color, background, intervalRow, intervalCol):
   '''
     set default fonts format (no effert to extension fonts)
     @param size           text size
@@ -171,56 +171,56 @@ class DFRobot_Display:
            intervalRow    text interval with row
            intervalCol    text interval with column
   '''
+  def setText(self, size, color, background, intervalRow, intervalCol):
 
-  def setTextCursor(self, x, y):
   '''
     set text print cursor
     @param x        position x
            y        position y
   '''
+  def setTextCursor(self, x, y):
 
-  def setBitmapSize(self, size):
   '''
     set bitmap size
     @param size       bitmap size
   '''
+  def setBitmapSize(self, size):
 
-  def setBitmapFmt(self, fmt):
   '''
     set bitmap format
     @param fmt        bitmap fmt, optional: BITMAP_XXXXXX
   '''
+  def setBitmapFmt(self, fmt):
 
-  def setExFonts(self, obj):
   '''
     set extension fonts class
     @param obj        fonts class like freetype_helper
 
     eg: setExFonts(Freetype_Helper("your file path"))
   '''
+  def setExFonts(self, obj):
 
-  def setExFontsFmt(self, width, height):
   '''
     set extension fonts format
     @param width        fonts width
            height       fonts height
   '''
+  def setExFontsFmt(self, width, height):
 
-  def pixel(self, x, y, color):
   '''
     draw oen pixel
     @param x        position x
            y        position y
            color    color
   '''
-
-  def clear(self, color):
+  def pixel(self, x, y, color):
+  
   '''
     clear screen with color
     @param color        color
   '''
-
-  def VLine(self, x, y, h, color):
+  def clear(self, color):
+  
   '''
     draw a vertical line
     @param x        position x
@@ -228,8 +228,8 @@ class DFRobot_Display:
            h        length
            color    color
   '''
-
-  def HLine(self, x, y, w, color):
+  def VLine(self, x, y, h, color):
+  
   '''
     draw a horizontal line
     @param x        position x
@@ -237,8 +237,8 @@ class DFRobot_Display:
            w        width
            color    color
   '''
-
-  def line(self, x, y, x1, y1, color):
+  def HLine(self, x, y, w, color):
+  
   '''
     draw a line
     @param x        position x
@@ -247,8 +247,8 @@ class DFRobot_Display:
            y1       position y1
            color    color
   '''
-
-  def triangle(self, x, y, x1, y1, x2, y2, color):
+  def line(self, x, y, x1, y1, color):
+  
   '''
     draw a triangle
     @param x        position x
@@ -259,8 +259,8 @@ class DFRobot_Display:
            y2       position y2
            color    color
   '''
-
-  def fillTriangle(self, x, y, x1, y1, x2, y2, color):
+  def triangle(self, x, y, x1, y1, x2, y2, color):
+  
   '''
     draw a fill triangle
     @param x        position x
@@ -271,8 +271,8 @@ class DFRobot_Display:
            y2       position y2
            color    color
   '''
-
-  def rect(self, x, y, w, h, color):
+  def fillTriangle(self, x, y, x1, y1, x2, y2, color):
+  
   '''
     draw a rectangle
     @param x        position x
@@ -281,8 +281,8 @@ class DFRobot_Display:
            h        height
            color    color
   '''
-
-  def fillRect(self, x, y, w, h, color):
+  def rect(self, x, y, w, h, color):
+  
   '''
     draw a fill rectangle
     @param x        position x
@@ -291,14 +291,14 @@ class DFRobot_Display:
            h        height
            color    color
   '''
+  def fillRect(self, x, y, w, h, color):
 
   QUADRANT_1 = 1
   QUADRANT_2 = 2
   QUADRANT_3 = 4
   QUADRANT_4 = 8
   QUADRANT_ALL = 15
-
-  def circleHelper(self, x, y, r, quadrant, color):
+  
   '''
     draw a circle with optional quadrant
     @param x        position x
@@ -307,8 +307,8 @@ class DFRobot_Display:
            quadrant quadrant
            color    color
   '''
-
-  def circle(self, x, y, r, color):
+  def circleHelper(self, x, y, r, quadrant, color):
+  
   '''
     draw a circle
     @param x        position x
@@ -316,8 +316,8 @@ class DFRobot_Display:
            r        radius
            color    color
   '''
-
-  def fillCircleHelper(self, x, y, r, quadrant, color):
+  def circle(self, x, y, r, color):
+  
   '''
     draw a fill circle with optional quadrant
     @param x        position x
@@ -326,8 +326,8 @@ class DFRobot_Display:
            quadrant quadrant
            color    color
   '''
-
-  def fillCircle(self, x, y, r, color):
+  def fillCircleHelper(self, x, y, r, quadrant, color):
+  
   '''
     draw a fill circle
     @param x        position x
@@ -335,8 +335,8 @@ class DFRobot_Display:
            r        radius
            color    color
   '''
-
-  def roundRect(self, x, y, w, h, r, color):
+  def fillCircle(self, x, y, r, color):
+  
   '''
     draw a round rectangle
     @param x        position x
@@ -346,8 +346,8 @@ class DFRobot_Display:
            r        radius
            color    color
   '''
-
-  def fillRoundRect(self, x, y, w, h, r, color):
+  def roundRect(self, x, y, w, h, r, color):
+  
   '''
     draw a fill round rectangle
     @param x        position x
@@ -356,8 +356,8 @@ class DFRobot_Display:
            h        height
            color    color
   '''
-
-  def bitmap(self, x, y, bitmap, w, h, color, background):
+  def fillRoundRect(self, x, y, w, h, r, color):
+  
   '''
     draw a bitmap
     @param x            position x
@@ -368,43 +368,45 @@ class DFRobot_Display:
            color        color for bit == 1
            background   color for bit == 0
   '''
-
-  def bitmapFile(self, x, y, path):
+  def bitmap(self, x, y, bitmap, w, h, color, background):
+  
   '''
     draw bitmap file
     @param x        position x
            y        position y
            path     file path(support bitcounts: 1, 24)
   '''
-
-  def writeOneChar(self, c):
+  def bitmapFile(self, x, y, path):
+  
   '''
     print one char on screen
     @param c        char that will be print
   '''
-
+  def writeOneChar(self, c):
+  
   BIN = bin
   OCT = oct
   DEC = lambda x : str(x)
   HEX = hex
 
-  def printStr(self, c):
   '''
     print object
     @param c        string
   '''
-
-  def printStrLn(self, c, num = DEC):
+  def printStr(self, c):
+  
   '''
     print object with new line
     @param c        object, if c is number, num can set to format
   '''
-
-  def setEnableDefaultFonts(self, opt):
+  def printStrLn(self, c, num = DEC):
+  
   '''
     set default alphabet enable or disable
     @param opt        True to enable, False to disable
   '''
+  def setEnableDefaultFonts(self, opt):
+  
 ```
 
 ## examples
@@ -415,26 +417,27 @@ class DFRobot_Epaper_SPI:
   FULL = True
   PART = False
 
+  '''
+  class init
+  @param bus        spi peripheral bus
+         dev        spi peripheral device
+         cs         cs pin
+         cd         cd pin
+         busy       busy pin
+  '''
   def __init__(self, bus, dev, cs, cd, busy):
-  '''
-    class init
-    @param bus        spi peripheral bus
-           dev        spi peripheral device
-           cs         cs pin
-           cd         cd pin
-           busy       busy pin
-  '''
-
-  def begin(self):
+  
   '''
     device begin
   '''
-
-  def flush(self, mode):
+  def begin(self):
+  
   '''
     flush device
     @param mode       optional mode: FULL, PART
   '''
+  def flush(self, mode):
+  
 ```
 
 ## display_extension
@@ -444,24 +447,25 @@ class DFRobot_Epaper_SPI:
 ```py
 class Freetype_Helper:
 
-  def __init__(self, filePath):
   '''
     class init, please note that documents cant infringe
     @param filePath       your file path
   '''
-
-  def setFmt(self, width, height):
+  def __init__(self, filePath):
+  
   '''
     set fonts width and height
     @param width        width
            height       height
   '''
-
-  def getOne(self, ch):
+  def setFmt(self, width, height):
+  
   '''
     get one font
     @param ch       
   '''
+  def getOne(self, ch):
+  
 ```
 
 ### fonts_x_x
