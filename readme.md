@@ -4,6 +4,7 @@ library for graphics.
 many display device of DFRobot depend on it.
 
 this lib supports python3 and python2.
+Chinese and English print available, other language untest.
 
 usage:
 download and unpack this lib to your raspberryPi
