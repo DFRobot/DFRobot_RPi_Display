@@ -334,10 +334,10 @@ class DFRobot_Display(PrintString):
     if h < 0:
       y += h
       h = -h
-    self.HLine(x, y, w, color)
-    self.HLine(x, y + h, w, color)
-    self.VLine(x, y, h, color)
-    self.VLine(x + w, y, h, color)
+    self.HLine(x - self._lineWidth // 2, y, w + self._lineWidth, color)
+    self.HLine(x - self._lineWidth // 2, y + h, w + self._lineWidth, color)
+    self.VLine(x, y - self._lineWidth // 2, h + self._lineWidth, color)
+    self.VLine(x + w, y - self._lineWidth // 2, h + self._lineWidth, color)
 
   def fillRect(self, x, y, w, h, color):
     temp = self._lineWidth

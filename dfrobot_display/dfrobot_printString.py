@@ -24,6 +24,6 @@ class PrintString:
     for i in c:
       self.writeOneChar(i)
 
-  def printStrLn(self, c, num = DEC):
+  def printStrLn(self, c):
     self.writeStr(c, num)
     self.writeOneChar("\n")

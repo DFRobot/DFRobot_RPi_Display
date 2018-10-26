@@ -42,15 +42,13 @@ epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
 epaper.setExFontsFmt(16, 16) # set extension fonts width and height
 
 # print test
-epaper.printStr("ABC成都BCA")
-epaper.flush(epaper.PART)
-time.sleep(1)
+for i in range(0, 8):
+  epaper.setTextCursor(0, 0)
+  epaper.printStr("DFRobot成都DFRobot")
+  epaper.flush(epaper.PART)
+  time.sleep(1)
 
-epaper.setTextCursor(0, 0)
-epaper.printStr("BCA都成ABC")
-epaper.flush(epaper.PART)
-time.sleep(1)
-
-epaper.setTextCursor(0, 16)
-epaper.printStr(hex(15))
-time.sleep(1)
+  epaper.setTextCursor(0, 0)
+  epaper.printStr("toboRFD都成toboRFD")
+  epaper.flush(epaper.PART)
+  time.sleep(1)
