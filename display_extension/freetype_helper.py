@@ -32,12 +32,15 @@ class Freetype_Helper:
       h = height
     else:
       h = self._height
+    offset = 0
+    if width < self._width:
+      offset = (self._width - width) // 2
     for i in range(h):
       temp = [0] * oneLineDataLen
       for j in range(width):
         if j < self._width:
           if buffer[i * width + j] > 0x7f:
-            temp[j // 8] |= (0x80 >> (j % 8))
+            temp[(j + offset) // 8] |= (0x80 >> ((j + offset) % 8))
       rslt += temp
     if len(rslt) < rsltLen:
       rslt += [0] * (rsltLen - len(rslt))

@@ -183,6 +183,9 @@ class DFRobot_Display(PrintString):
 
   def setExFontsFmt(self, width, height):
     self._fonts.setExFontsFmt(width, height)
+    
+  def setEnableDefaultFonts(self, opt):
+    self._fonts.setEnableDefaultFonts(opt)
 
   def pixel(self, x, y, color):
     pass
