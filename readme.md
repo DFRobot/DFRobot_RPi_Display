@@ -168,10 +168,10 @@ class DFRobot_Display:
     @param size           text size
            color          text color
            background     text background
-           intervalRow    text interval with row
-           intervalCol    text interval with column
+           intervalRow    text interval with row, default value is 2
+           intervalCol    text interval with column, default value is 0
   '''
-  def setText(self, size, color, background, intervalRow, intervalCol):
+  def setText(self, size, color, background, intervalRow = 0, intervalCol = 0):
 
   '''
     set text print cursor

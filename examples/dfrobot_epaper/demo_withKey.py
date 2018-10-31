@@ -18,6 +18,10 @@ sys.path.append("../..") # set system path to top
 from devices import dfrobot_epaper
 import time
 
+from display_extension.freetype_helper import Freetype_Helper
+
+fontFilePath = "../../display_extension/wqydkzh.ttf" # fonts file
+
 # peripheral params
 RASPBERRY_SPI_BUS = 0
 RASPBERRY_SPI_DEV = 0
@@ -42,6 +46,10 @@ pinOut.setOut(GPIO.HIGH)
 
 epaper = dfrobot_epaper.DFRobot_Epaper_SPI(RASPBERRY_SPI_BUS, RASPBERRY_SPI_DEV, RASPBERRY_PIN_CS, RASPBERRY_PIN_CD, RASPBERRY_PIN_BUSY) # create epaper object
 
+# config extension fonts
+epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
+epaper.setExFontsFmt(32, 32) # set extension fonts width and height
+
 # key A callback
 def keyACallBack():
   global haveKeyA
@@ -64,7 +72,7 @@ epaper.clear(epaper.WHITE)
 epaper.flush(epaper.FULL)
 time.sleep(1)
 
-epaper.setText(2, epaper.BLACK, epaper.WHITE, 0, 0) # set text size, color, background, interval row, interval col
+epaper.setText(1, epaper.BLACK, epaper.WHITE, 2, 0) # set text size, color, background, interval row, interval col
 
 keyCount = 0
 timeCount = 0
@@ -72,6 +80,7 @@ timeCount = 0
 epaper.printStr("key test")
 epaper.flush(epaper.PART)
 epaper.setTextCursor(0, 32)
+
 while True:
   if haveKeyA:
     keyCount += 1
@@ -89,5 +98,5 @@ while True:
     epaper.setTextCursor(0, 0)
     epaper.printStr("key test")
     epaper.flush(epaper.PART)
-    epaper.setTextCursor(0, 32) # set text cursor to origin
+    epaper.setTextCursor(0, 32) # set text cursor to origin and clear
   time.sleep(0.01)

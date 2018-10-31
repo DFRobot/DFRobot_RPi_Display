@@ -11,7 +11,6 @@ from display_extension import fonts_8_16 as fonts_ABC
 try:
   from dfrobot_interface_raspberry.dfrobot_raspberry_spi import SPI
   from dfrobot_interface_raspberry.dfrobot_raspberry_gpio import GPIO
-  from display_extension.freetype_helper import Freetype_Helper
 except:
   print("unknow platform")
   exit()
@@ -61,9 +60,9 @@ class DFRobot_Epaper(DFRobot_Display):
     # self._powerOn()
 
   def pixel(self, x, y, color):
-    if x < 0 or x > self._width:
+    if x < 0 or x >= self._width:
       return
-    if y < 0 or y > self._height:
+    if y < 0 or y >= self._height:
       return
     x = int(x)
     y = int(y)

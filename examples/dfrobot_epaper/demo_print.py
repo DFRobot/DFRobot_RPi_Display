@@ -39,16 +39,22 @@ time.sleep(1)
 
 # config extension fonts
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
-epaper.setExFontsFmt(16, 16) # set extension fonts width and height
 
 # print test
-for i in range(0, 8):
-  epaper.setTextCursor(0, 0)
-  epaper.printStr("DFRobot成都DFRobot")
-  epaper.flush(epaper.PART)
-  time.sleep(1)
+epaper.setExFontsFmt(16, 16) # set extension fonts width and height
+epaper.setTextCursor(0, 0)
+epaper.printStr("df 成都极趣 epaper")
+epaper.flush(epaper.PART)
+time.sleep(1)
 
-  epaper.setTextCursor(0, 0)
-  epaper.printStr("toboRFD都成toboRFD")
-  epaper.flush(epaper.PART)
-  time.sleep(1)
+epaper.setExFontsFmt(24, 24) # set extension fonts width and height
+epaper.setTextCursor(0, 20)
+epaper.printStr("DF 墨水屏 EPAPER")
+epaper.flush(epaper.PART)
+time.sleep(1)
+
+epaper.setExFontsFmt(32, 32) # set extension fonts width and height
+epaper.setTextCursor(0, 48)
+epaper.printStr("fast, safe and powerful")
+epaper.flush(epaper.PART)
+time.sleep(1)

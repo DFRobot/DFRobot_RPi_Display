@@ -5,6 +5,7 @@ depends: freetype-py
 '''
 
 import freetype
+import math
 
 class Freetype_Helper:
 
@@ -21,27 +22,22 @@ class Freetype_Helper:
   def getOne(self, ch):
     self._face.load_char(ch)
     bitmap = self._face.glyph.bitmap
+    originY = self._face.glyph.bitmap_top
     width = bitmap.width
     height = bitmap.rows
     buffer = bitmap.buffer
-    oneLineDataLen = (self._width - 1) // 8 + 1
-    rsltLen = oneLineDataLen * self._height
+    oneLineDataLen = (width - 1) // 8 + 1
     rslt = []
+    heightOffset = 0
     if height < self._height:
-      rslt = [0] * ((self._height - height) // 2 * oneLineDataLen)
-      h = height
-    else:
-      h = self._height
-    offset = 0
-    if width < self._width:
-      offset = (self._width - width) // 2
-    for i in range(h):
+      heightOffset = int(math.ceil(self._height * 4 / 5)) - originY
+      if heightOffset < 0:
+        heightOffset = 0
+      rslt += [0] * oneLineDataLen * heightOffset
+    for i in range(height):
       temp = [0] * oneLineDataLen
       for j in range(width):
-        if j < self._width:
-          if buffer[i * width + j] > 0x7f:
-            temp[(j + offset) // 8] |= (0x80 >> ((j + offset) % 8))
+        if buffer[i * width + j] > 0x7f:
+          temp[j // 8] |= 0x80 >> (j % 8)
       rslt += temp
-    if len(rslt) < rsltLen:
-      rslt += [0] * (rsltLen - len(rslt))
-    return (rslt, self._width, self._height, "TBMLLR")
+    return (rslt, width, height + heightOffset, "TBMLLR")

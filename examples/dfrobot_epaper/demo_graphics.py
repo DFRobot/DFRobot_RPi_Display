@@ -27,7 +27,7 @@ RASPBERRY_PIN_BUSY = 4
 
 epaper = dfrobot_epaper.DFRobot_Epaper_SPI(RASPBERRY_SPI_BUS, RASPBERRY_SPI_DEV, RASPBERRY_PIN_CS, RASPBERRY_PIN_CD, RASPBERRY_PIN_BUSY) # create epaper object
 
-# clear screen
+# clear screen and set line width to 3
 epaper.begin()
 epaper.clear(epaper.WHITE)
 epaper.flush(epaper.FULL)

@@ -12,6 +12,8 @@ class Fonts:
     self._fontsABCFmt = ""
 
     self._haveExtensionFonts = False
+    self._extensionFontsWidth = 0
+    self._extensionFontsHeight = 0
     
     self._enableDefaultFonts = True
 
@@ -21,10 +23,14 @@ class Fonts:
     self._fontsABCWidth = fonts.width
     self._fontsABCHeight = fonts.height
     self._fontsABCFmt = fonts.fmt
+    
+    self._extensionFontsWidth = fonts.width
+    self._extensionFontsHeight = fonts.height
 
   def setExFonts(self, obj):
     self._haveExtensionFonts = True
     self._extensionFonts = obj
+    self._enableDefaultFonts = False
   
   def setEnableDefaultFonts(self, opt):
     if opt:
@@ -35,6 +41,8 @@ class Fonts:
   def setExFontsFmt(self, width, height):
     if self._haveExtensionFonts:
       self._extensionFonts.setFmt(width, height)
+      self._extensionFontsWidth = width
+      self._extensionFontsHeight = height
 
   def getOneCharacter(self, c):
     w = 0
@@ -53,10 +61,11 @@ class Fonts:
         # print("try get fonts ABC faild")
         pass
     if self._haveExtensionFonts and done == False:
-      try:
-        (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
-        done = True
-      except:
+      (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
+      # try:
+        # (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
+        # done = True
+      # except:
         # print("try get unicode fonts faild")
-        pass
+        # pass
     return (rslt, w, h, fmt)

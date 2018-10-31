@@ -97,7 +97,7 @@ class DFRobot_Display(PrintString):
     self._textBackground = self.WHITE
     self._textCursorX = 0
     self._textCursorY = 0
-    self._textIntervalRow = 0
+    self._textIntervalRow = 2
     self._textIntervalCol = 0
 
   def _ternaryExpression(self, condition, o1, o2):
@@ -157,7 +157,7 @@ class DFRobot_Display(PrintString):
       return
     self._lineWidth = w
 
-  def setText(self, size, color, background, intervalRow, intervalCol):
+  def setText(self, size, color, background, intervalRow = 2, intervalCol = 0):
     self._textColor = color
     self._textIntervalRow = intervalRow
     self._textIntervalCol = intervalCol
@@ -657,14 +657,17 @@ class DFRobot_Display(PrintString):
     if len(l):
       temp1 = self._bitmapSize
       self._bitmapSize = self._textSize
+      self._textCursorX += self._textIntervalRow
       if self._textCursorX + self._textSize * width > self._width:
-        self._textCursorX = 0
+        self._textCursorX = self._textIntervalRow
         self._textCursorY += self._textSize * height + self._textIntervalCol
       self.bitmap(self._textCursorX, self._textCursorY, l, width, height, self._textColor, self._textBackground)
-      self._textCursorX += self._textSize * width + self._textIntervalRow
+      self._textCursorX += self._textSize * width
       self._bitmapSize = temp1
     else:
       if ord(c) == ord("\n"):
         self._textCursorX = 0
         self._textCursorY += height * self._textSize
+      elif ord(c) == ord(" "):
+        self._textCursorX += self._fonts._extensionFontsWidth // 2
     self._bitmapFmt = temp
