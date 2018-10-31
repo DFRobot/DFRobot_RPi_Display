@@ -39,6 +39,7 @@ time.sleep(1)
 
 # config extension fonts
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
+epaper.setText(1, epaper.BLACK, epaper.WHITE, 2, 2)
 
 # print test
 epaper.setExFontsFmt(32, 32) # set extension fonts width and height
@@ -54,7 +55,7 @@ epaper.flush(epaper.PART)
 time.sleep(1)
 
 epaper.setExFontsFmt(16, 16) # set extension fonts width and height
-epaper.setTextCursor(0, 56)
+epaper.setTextCursor(0, 60)
 epaper.printStr("DFRobot是上海智位机器人股份有限公司旗下注册商标，商标注册号为19098139")
 epaper.flush(epaper.PART)
 time.sleep(1)
