@@ -41,20 +41,20 @@ time.sleep(1)
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
 
 # print test
-epaper.setExFontsFmt(16, 16) # set extension fonts width and height
+epaper.setExFontsFmt(32, 32) # set extension fonts width and height
 epaper.setTextCursor(0, 0)
-epaper.printStr("df 成都极趣 epaper")
+epaper.printStr("DFRobot")
 epaper.flush(epaper.PART)
 time.sleep(1)
 
 epaper.setExFontsFmt(24, 24) # set extension fonts width and height
-epaper.setTextCursor(0, 20)
-epaper.printStr("DF 墨水屏 EPAPER")
+epaper.setTextCursor(0, 32)
+epaper.printStr("品牌简介")
 epaper.flush(epaper.PART)
 time.sleep(1)
 
-epaper.setExFontsFmt(32, 32) # set extension fonts width and height
-epaper.setTextCursor(0, 48)
-epaper.printStr("fast, safe and powerful")
+epaper.setExFontsFmt(16, 16) # set extension fonts width and height
+epaper.setTextCursor(0, 56)
+epaper.printStr("DFRobot是上海智位机器人股份有限公司旗下注册商标，商标注册号为19098139")
 epaper.flush(epaper.PART)
 time.sleep(1)
