@@ -654,20 +654,22 @@ class DFRobot_Display(PrintString):
     (l, width, height, fmt) = self._fonts.getOneCharacter(c)
     temp = self._bitmapFmt
     self._bmpFmt = fmt
+    ts = self._textSize
     if len(l):
       temp1 = self._bitmapSize
-      self._bitmapSize = self._textSize
+      self._bitmapSize = ts
       self._textCursorX += self._textIntervalRow
-      if self._textCursorX + self._textSize * width > self._width:
+      if self._textCursorX + ts * width > self._width:
         self._textCursorX = self._textIntervalRow
-        self._textCursorY += self._textSize * height + self._textIntervalCol
+        self._textCursorY += ts * height + self._textIntervalCol
+      self.fillRect(self._textCursorX, self._textCursorY, self._fonts._extensionFontsWidth * ts, self._fonts._extensionFontsHeight * ts, self._textBackground)
       self.bitmap(self._textCursorX, self._textCursorY, l, width, height, self._textColor, self._textBackground)
-      self._textCursorX += self._textSize * width
+      self._textCursorX += ts * width
       self._bitmapSize = temp1
     else:
       if ord(c) == ord("\n"):
         self._textCursorX = 0
-        self._textCursorY += height * self._textSize
+        self._textCursorY += height * ts
       elif ord(c) == ord(" "):
         self._textCursorX += self._fonts._extensionFontsWidth // 2
     self._bitmapFmt = temp

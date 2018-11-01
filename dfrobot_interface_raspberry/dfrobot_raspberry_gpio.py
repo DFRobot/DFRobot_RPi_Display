@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import time
 import RPi.GPIO as RPIGPIO
 
 RPIGPIO.setmode(RPIGPIO.BCM)
@@ -19,7 +20,9 @@ class GPIO:
 
   def __init__(self, pin, mode, defaultOut = HIGH):
     self._pin = pin
-    self._fInterrupt = None
+    self._fInt = None
+    self._intDone = True
+    self._intMode = None
     if mode == self.OUT:
       RPIGPIO.setup(pin, mode)
       if defaultOut == self.HIGH:
@@ -36,13 +39,23 @@ class GPIO:
       RPIGPIO.output(self._pin, self.LOW)
 
   def _intCB(self, status):
-    self._fInterrupt()
+    if self._intDone:
+      self._intDone = False
+      time.sleep(0.01)
+      if self._intMode == self.BOTH:
+        self._fInt()
+      elif self._intMode == self.RISING and self.read() == self.HIGH:
+        self._fInt()
+      elif self._intMode == self.FALLING and self.read() == self.LOW:
+        self._fInt()
+      self._intDone = True
 
   def setInterrupt(self, mode, cb):
     if mode != self.RISING and mode != self.FALLING and mode != self.BOTH:
       return
+    self._intMode = mode
     RPIGPIO.add_event_detect(self._pin, mode, self._intCB)
-    self._fInterrupt = cb
+    self._fInt = cb
 
   def read(self):
     return RPIGPIO.input(self._pin)

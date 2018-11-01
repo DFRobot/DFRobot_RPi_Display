@@ -43,7 +43,7 @@ epaper.setText(1, epaper.BLACK, epaper.WHITE, 2, 2)
 
 # print test
 epaper.setExFontsFmt(32, 32) # set extension fonts width and height
-epaper.setTextCursor(0, 0)
+epaper.setTextCursor(69, 0)
 epaper.printStr("DFRobot")
 epaper.flush(epaper.PART)
 time.sleep(1)
@@ -56,6 +56,19 @@ time.sleep(1)
 
 epaper.setExFontsFmt(16, 16) # set extension fonts width and height
 epaper.setTextCursor(0, 60)
-epaper.printStr("DFRobot是上海智位机器人股份有限公司旗下注册商标，商标注册号为19098139")
+epaper.printStr("    DFRobot是上海智位机器人股份有限公司旗下注册商标。")
 epaper.flush(epaper.PART)
 time.sleep(1)
+
+for i in range(8):
+  epaper.setExFontsFmt(16, 16) # set extension fonts width and height
+  epaper.setTextCursor(0, 96)
+  epaper.printStr("abcdefghijklmnopqrstuvwxyz")
+  epaper.flush(epaper.PART)
+  time.sleep(1)
+  
+  epaper.setExFontsFmt(16, 16) # set extension fonts width and height
+  epaper.setTextCursor(0, 96)
+  epaper.printStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+  epaper.flush(epaper.PART)
+  time.sleep(1)

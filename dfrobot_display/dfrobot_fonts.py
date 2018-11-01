@@ -61,11 +61,10 @@ class Fonts:
         # print("try get fonts ABC faild")
         pass
     if self._haveExtensionFonts and done == False:
-      (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
-      # try:
-        # (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
-        # done = True
-      # except:
-        # print("try get unicode fonts faild")
-        # pass
+      # (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
+      try:
+        (rslt, w, h, fmt) = self._extensionFonts.getOne(c)
+        done = True
+      except:
+        print("try get unicode fonts faild")
     return (rslt, w, h, fmt)

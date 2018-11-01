@@ -8,8 +8,12 @@ Chinese and English print available, other language untest.
 
 usage:
 download and unpack this lib to your raspberryPi
-open your cmd window
+open your terminal
 change direction to the libs examples
+
+use cmd:
+python -m pip install freetype-py
+to install freetype
 
 use cmd:
 python demo_xxxx.py
@@ -18,16 +22,22 @@ to run test
 ## file strcture
 ------------------------------------------
 <pre>
+--devices:
+  __init__.py
+  dfrobot_epaper.py
+  
 --dfrobot_display:
     __init__.py
     dfrobot_display.py
     dfrobot_fonts.py
     dfrobot_printString.py
+    
 --dfrobot_interface_raspberry:
     __init__.py
     dfrobot_raspberry_gpio.py
     dfrobot_raspberry_spi.py
     dfrobot_raspberry_i2c.py
+    
 --display_extension:
     __init__.py
     logo_colorbits1.bmp
@@ -36,9 +46,7 @@ to run test
     fonts_8_16.py
     freetype_helper.py
     wqydkzh.ttf
---devices:
-  __init__.py
-  dfrobot_epaper.py
+    
 --examples:
     __init__.py
     --dfrobot_epaper
@@ -47,6 +55,7 @@ to run test
         demo_bitmap.py
         demo_print.py
         demo_withKey.py
+        
 readme.md
 </pre>
 ### devices
@@ -55,9 +64,13 @@ driver for device
 select driver that you need
 </pre>
 ### dfrobot_display
+<pre>
 library base, all must download
+</pre>
 ### dfrobot_interface_raspberry
+<pre>
 interface for raspberry
+</pre>
 ### display_extension
 optional files <br>
 
@@ -67,7 +80,7 @@ logo_colorbits1.bmp | bmp file saved as bitcounts = 1
 logo_colorbits24.bmp | bmp file saved as bitcounts = 24
 fonts_6_8.py | bitmap for alphabet fonts, width = 6, height = 8 usage is [here](#fonts_x_x)
 fonts_8_16.py | bitmap for alphabet fonts, width = 8, height = 16 usage is [here](#fonts_x_x)
-freetype_helper.py | use it if you installed freetype-py(cmd: python3 -m pip install freetype-py), usage is [here](#Freetype_Helper)
+freetype_helper.py | use it if you installed freetype-py(cmd: python -m pip install freetype-py), usage is [here](#Freetype_Helper)
 wqydkzh.ttf | 文泉驿等宽正黑.ttf gpl license fonts file, use with freetype_helper.py
 
 ## library dfrobot_display
