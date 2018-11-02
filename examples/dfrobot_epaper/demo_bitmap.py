@@ -33,5 +33,5 @@ epaper.clear(epaper.WHITE)
 epaper.flush(epaper.FULL)
 time.sleep(1)
 
-epaper.bitmapFile(0, 0, "../../display_extension/logo_colorbits1.bmp") # show bitmap file
+epaper.bitmapFile(0, 0, "./epaper-Chinese.bmp") # show bitmap file
 epaper.flush(epaper.PART)

@@ -49,12 +49,7 @@ to run test
     
 --examples:
     __init__.py
-    --dfrobot_epaper
-        __init__.py
-        demo_graphics.py
-        demo_bitmap.py
-        demo_print.py
-        demo_withKey.py
+    XXXX
         
 readme.md
 </pre>
