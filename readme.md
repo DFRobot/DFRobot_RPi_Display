@@ -19,7 +19,16 @@ use cmd:
 python demo_xxxx.py
 to run test
 </pre>
-## file strcture
+
+### Table of content
+
+·[File Structure](#File Structure)
+·[Methods](#Methods)
+·[Compatibility](#Compatibility)
+·[History](#History)
+·[Credits](#Credits)
+
+## File Structure
 ------------------------------------------
 <pre>
 --devices:
@@ -70,15 +79,16 @@ interface for raspberry
 optional files <br>
 
 file | remark
----- | ------
+---------------
 logo_colorbits1.bmp | bmp file saved as bitcounts = 1
 logo_colorbits24.bmp | bmp file saved as bitcounts = 24
 fonts_6_8.py | bitmap for alphabet fonts, width = 6, height = 8 usage is [here](#fonts_x_x)
 fonts_8_16.py | bitmap for alphabet fonts, width = 8, height = 16 usage is [here](#fonts_x_x)
 freetype_helper.py | use it if you installed freetype-py(cmd: python -m pip install freetype-py), usage is [here](#Freetype_Helper)
-wqydkzh.ttf | 文泉驿等宽正黑.ttf gpl license fonts file, use with freetype_helper.py
+wqydkzh.ttf | 文泉驿等宽正黑.ttf Chinese gpl license fonts file, use with freetype_helper.py
+zkklt.ttf | 站酷快乐体.ttf Chinese open source fonts file, use with freetype_helper.py
 
-## library dfrobot_display
+## Methods
 
 ```py
 
@@ -483,5 +493,21 @@ eg:
   DFRobot_Display.setFontsABC(fonts_x_x)
   DFRobot_Display.printStr("ABC")
 </pre>
+
+## Compatibility
+
+boards | Work Well | Untest | Remark
+------------------------------------
+raspberryPi 3b | √ | |
+raspberryPi 3b+ | √ | |
+raspberryPi Zero W | | √ |
+
+## History
+
+·2018/11/5 V1.0
+
+## Credits
+
+·author [guojiehan jiehan.guo@dfrobot.com]
 
 [top](#DFRobot_Display)
