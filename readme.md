@@ -22,13 +22,13 @@ to run test
 
 ### Table of content
 
-·[File Structure](#File Structure)
-·[Methods](#Methods)
-·[Compatibility](#Compatibility)
-·[History](#History)
-·[Credits](#Credits)
+·[FileStructure](#FileStructure) </br>
+·[Methods](#Methods) </br>
+·[Compatibility](#Compatibility) </br>
+·[History](#History) </br>
+·[Credits](#Credits) </br>
 
-## File Structure
+## FileStructure
 ------------------------------------------
 <pre>
 --devices:
