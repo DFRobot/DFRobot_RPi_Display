@@ -79,7 +79,7 @@ interface for raspberry
 optional files <br>
 
 file | remark
----------------
+-----|-------
 logo_colorbits1.bmp | bmp file saved as bitcounts = 1
 logo_colorbits24.bmp | bmp file saved as bitcounts = 24
 fonts_6_8.py | bitmap for alphabet fonts, width = 6, height = 8 usage is [here](#fonts_x_x)
@@ -497,7 +497,7 @@ eg:
 ## Compatibility
 
 boards | Work Well | Untest | Remark
-------------------------------------
+-------|-----------|--------|-------
 raspberryPi 3b | √ | |
 raspberryPi 3b+ | √ | |
 raspberryPi Zero W | | √ |
