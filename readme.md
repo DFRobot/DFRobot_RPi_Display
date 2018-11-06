@@ -182,7 +182,7 @@ class DFRobot_Display:
   def setLineWidth(self, w):
 
   '''
-    set default fonts format (no effert to extension fonts)
+    set text format
     @param size           text size
            color          text color
            background     text background
