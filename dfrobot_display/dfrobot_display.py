@@ -157,7 +157,7 @@ class DFRobot_Display(PrintString):
       return
     self._lineWidth = w
 
-  def setText(self, size, color, background, intervalRow = 2, intervalCol = 0):
+  def setTextFormat(self, size, color, background, intervalRow = 2, intervalCol = 0):
     self._textColor = color
     self._textIntervalRow = intervalRow
     self._textIntervalCol = intervalCol
@@ -599,7 +599,7 @@ class DFRobot_Display(PrintString):
     height = self._bytesToNumber(c[22:26])
     colorBits = self._bytesToNumber(c[28:30])
     compression = self._bytesToNumber(c[30:32])
-    print("w: %d, h: %d, colorBits: %d" %(width, height, colorBits))
+    # print("w: %d, h: %d, colorBits: %d" %(width, height, colorBits))
 
     if colorBits == 24:
       width3 = width * 3

@@ -15,6 +15,8 @@ date  2018-10-27
 import sys
 sys.path.append("../..") # set system path to top
 
+import threading
+
 from devices import dfrobot_epaper
 import time
 
@@ -33,8 +35,6 @@ RASPBERRY_PIN_BUSY = 4
 GPIO = dfrobot_epaper.GPIO
 EPAPER_KEY_A = 21
 EPAPER_KEY_B = 20
-haveKeyA = False # key A down flag
-haveKeyB = False # key B down flag
 
 # GPIO output test
 '''
@@ -50,15 +50,24 @@ epaper = dfrobot_epaper.DFRobot_Epaper_SPI(RASPBERRY_SPI_BUS, RASPBERRY_SPI_DEV,
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
 epaper.setExFontsFmt(32, 32) # set extension fonts width and height
 
+keyALock = threading.Lock() # key A threading lock
+keyBLock = threading.Lock() # key B threading lock
+keyAFlag = False # key A flag
+keyBFlag = False # key B flag
+
 # key A callback
 def keyACallBack():
-  global haveKeyA
-  haveKeyA = True
+  global keyALock, keyAFlag
+  keyALock.acquire() # wait key A lock release
+  keyAFlag = True
+  keyALock.release()
 
 # key B callback
 def keyBCallBack():
-  global haveKeyB
-  haveKeyB = True 
+  global keyBLock, keyBFlag
+  keyBLock.acquire() # wait key B lock release
+  keyBFlag = True
+  keyBLock.release()
 
 # config keyA and keyB
 keyA = GPIO(EPAPER_KEY_A, GPIO.IN) # set key to input
@@ -72,7 +81,7 @@ epaper.clear(epaper.WHITE)
 epaper.flush(epaper.FULL)
 time.sleep(1)
 
-epaper.setText(1, epaper.BLACK, epaper.WHITE, 2, 0) # set text size, color, background, interval row, interval col
+epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 0) # set text size, color, background, interval row, interval col
 
 keyCount = 0
 timeCount = 0
@@ -82,14 +91,18 @@ epaper.flush(epaper.PART)
 epaper.setTextCursor(0, 32)
 
 while True:
-  if haveKeyA:
+  if keyAFlag:
+    keyALock.acquire() # wait key A release
+    keyAFlag = False
+    keyALock.release()
     keyCount += 1
-    haveKeyA = False
     epaper.printStr("A")
     epaper.flush(epaper.PART)
-  if haveKeyB:
+  if keyBFlag:
+    keyBLock.acquire() # wait key B release
+    keyBFlag = False
+    keyBLock.release()
     keyCount += 1
-    haveKeyB = False
     epaper.printStr("B")
     epaper.flush(epaper.PART)
   if keyCount >= 16:

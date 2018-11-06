@@ -9,8 +9,8 @@ from dfrobot_display.dfrobot_display import DFRobot_Display
 from display_extension import fonts_8_16 as fonts_ABC
 
 try:
-  from dfrobot_interface_raspberry.dfrobot_raspberry_spi import SPI
-  from dfrobot_interface_raspberry.dfrobot_raspberry_gpio import GPIO
+  from dfrobot_interface.raspberry.spi import SPI
+  from dfrobot_interface.raspberry.gpio import GPIO
 except:
   print("unknow platform")
   exit()

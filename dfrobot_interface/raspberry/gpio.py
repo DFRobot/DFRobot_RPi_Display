@@ -41,7 +41,7 @@ class GPIO:
   def _intCB(self, status):
     if self._intDone:
       self._intDone = False
-      time.sleep(0.01)
+      time.sleep(0.02)
       if self._intMode == self.BOTH:
         self._fInt()
       elif self._intMode == self.RISING and self.read() == self.HIGH:

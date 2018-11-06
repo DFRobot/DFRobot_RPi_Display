@@ -41,11 +41,12 @@ to run test
     dfrobot_fonts.py
     dfrobot_printString.py
     
---dfrobot_interface_raspberry:
+--dfrobot_interface:
     __init__.py
-    dfrobot_raspberry_gpio.py
-    dfrobot_raspberry_spi.py
-    dfrobot_raspberry_i2c.py
+    --raspberry:
+      spi.py
+      gpio.py
+      i2c.py
     
 --display_extension:
     __init__.py
@@ -71,9 +72,10 @@ select driver that you need
 <pre>
 library base, all must download
 </pre>
-### dfrobot_interface_raspberry
+### dfrobot_interface
 <pre>
-interface for raspberry
+interface for your board
+select interface that you need
 </pre>
 ### display_extension
 optional files <br>
@@ -87,6 +89,12 @@ fonts_8_16.py | bitmap for alphabet fonts, width = 8, height = 16 usage is [here
 freetype_helper.py | use it if you installed freetype-py(cmd: python -m pip install freetype-py), usage is [here](#Freetype_Helper)
 wqydkzh.ttf | 文泉驿等宽正黑.ttf Chinese gpl license fonts file, use with freetype_helper.py
 zkklt.ttf | 站酷快乐体.ttf Chinese open source fonts file, use with freetype_helper.py
+
+### examples
+<pre>
+examples for devices
+select examples that you need
+</pre>
 
 ## Methods
 
@@ -189,7 +197,7 @@ class DFRobot_Display:
            intervalRow    text interval with row, default value is 2
            intervalCol    text interval with column, default value is 0
   '''
-  def setText(self, size, color, background, intervalRow = 2, intervalCol = 0):
+  def setTextFormat(self, size, color, background, intervalRow = 2, intervalCol = 0):
 
   '''
     set text print cursor
