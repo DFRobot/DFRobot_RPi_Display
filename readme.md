@@ -4,7 +4,7 @@ library for graphics.
 many display device of DFRobot depend on it.
 
 this lib supports python3 and python2.
-Chinese and English print available, other language untest.
+Chinese, Japanese, Korean and English print available, other language untest.
 
 usage:
 download and unpack this lib to your raspberryPi
@@ -56,6 +56,7 @@ to run test
     fonts_8_16.py
     freetype_helper.py
     wqydkzh.ttf
+    zkklt.ttf
     
 --examples:
     __init__.py
