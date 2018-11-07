@@ -3,7 +3,7 @@
 file demo_print.py
 
 connect epaper to your raspberryPi
-print with fonts file, Different files will have different display effects
+print with fonts file, different fonts files will have different display effects
 
 Copyright   [DFRobot](http://www.dfrobot.com), 2016
 Copyright   GNU Lesser General Public License
@@ -39,36 +39,14 @@ time.sleep(1)
 
 # config extension fonts
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
-epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 1)
-
-# print test
-epaper.setExFontsFmt(32, 32) # set extension fonts width and height
-epaper.setTextCursor(69, 0)
-epaper.printStr("DFRobot")
-epaper.flush(epaper.PART)
-time.sleep(1)
-
+epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 6)
 epaper.setExFontsFmt(24, 24) # set extension fonts width and height
-epaper.setTextCursor(0, 32)
-epaper.printStr("品牌简介")
+
+epaper.clear(epaper.WHITE)
+epaper.flush(epaper.PART)
+epaper.printStrLn("中国 北京")
+epaper.printStrLn("USA Washington")
+epaper.printStrLn("日本 東京")
+epaper.printStrLn("韓国 서울")
 epaper.flush(epaper.PART)
 time.sleep(1)
-
-epaper.setExFontsFmt(16, 16) # set extension fonts width and height
-epaper.setTextCursor(0, 60)
-epaper.printStr("    DFRobot是上海智位机器人股份有限公司旗下注册商标。")
-epaper.flush(epaper.PART)
-time.sleep(1)
-
-for i in range(8):
-  epaper.setExFontsFmt(16, 16) # set extension fonts width and height
-  epaper.setTextCursor(0, 96)
-  epaper.printStr("abcdefghijklmnopqrstuvwxyz")
-  epaper.flush(epaper.PART)
-  time.sleep(1)
-  
-  epaper.setExFontsFmt(16, 16) # set extension fonts width and height
-  epaper.setTextCursor(0, 96)
-  epaper.printStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-  epaper.flush(epaper.PART)
-  time.sleep(1)
