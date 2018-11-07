@@ -227,14 +227,14 @@ class DFRobot_Display:
   def setExFonts(self, obj):
 
   '''
-    set extension fonts format
+    set extension fonts format, different fonts files will have different display effects
     @param width        fonts width
            height       fonts height
   '''
   def setExFontsFmt(self, width, height):
 
   '''
-    draw oen pixel
+    draw one pixel
     @param x        position x
            y        position y
            color    color

@@ -9,9 +9,6 @@ class PrintString:
 
   def writeOneChar(self, ch):
     pass
-  
-  def writeStr(self, ch, num):
-    pass
 
   def printStr(self, c):
     if sys.version_info.major == 2:
@@ -25,5 +22,5 @@ class PrintString:
       self.writeOneChar(i)
 
   def printStrLn(self, c):
-    self.writeStr(c, num)
+    self.printStr(c)
     self.writeOneChar("\n")

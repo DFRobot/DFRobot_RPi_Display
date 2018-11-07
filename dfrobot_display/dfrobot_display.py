@@ -669,7 +669,7 @@ class DFRobot_Display(PrintString):
     else:
       if ord(c) == ord("\n"):
         self._textCursorX = 0
-        self._textCursorY += height * ts
+        self._textCursorY += height * ts + self._textIntervalCol
       elif ord(c) == ord(" "):
-        self._textCursorX += self._fonts._extensionFontsWidth // 2
+        self._textCursorX += self._fonts._extensionFontsWidth // 2 + self._textIntervalRow
     self._bitmapFmt = temp

@@ -24,8 +24,8 @@ class Fonts:
     self._fontsABCHeight = fonts.height
     self._fontsABCFmt = fonts.fmt
     
-    self._extensionFontsWidth = fonts.width
-    self._extensionFontsHeight = fonts.height
+    self._extensionFontsWidth = fonts.width * 2
+    self._extensionFontsHeight = fonts.height * 2
 
   def setExFonts(self, obj):
     self._haveExtensionFonts = True
