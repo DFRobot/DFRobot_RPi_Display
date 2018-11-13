@@ -39,7 +39,7 @@ time.sleep(1)
 
 # config extension fonts
 epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
-epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 1)
+epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 1, 1)
 
 # print test
 epaper.setExFontsFmt(32, 32) # set extension fonts width and height

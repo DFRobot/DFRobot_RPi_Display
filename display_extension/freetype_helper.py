@@ -29,18 +29,23 @@ class Freetype_Helper:
     oneLineDataLen = (width - 1) // 8 + 1
     rslt = []
     heightOffset = 0
-    if height < self._height:
-      heightOffset = int((self._height * 8 + 10) // 10) - originY
+    needAdd = False
+    if (ord(ch) >= ord(" ") and ord(ch) <= ord("~")) or height < (self._height // 2):
+      # heightOffset = math.floor(self._height * 4 / 5) - originY
+      heightOffset = int((self._height * 8 + 5) // 10) - originY
       if heightOffset < 0:
         heightOffset = 0
       rslt += [0] * oneLineDataLen * heightOffset
-    needAdd = False
-    for i in range(height):
+      needAdd = True
+    h = self._height
+    if h > height:
+      h = height
+    for i in range(h):
       temp = [0] * oneLineDataLen
       for j in range(width):
-        if buffer[i * width + j] > 0x7f:
+        if buffer[i * width + j] > 96:
           needAdd = True
           temp[j // 8] |= 0x80 >> (j % 8)
       if needAdd:
         rslt += temp
-    return (rslt, width, height + heightOffset, "TBMLLR")
+    return (rslt, width, h + heightOffset, "TBMLLR")

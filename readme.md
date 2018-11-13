@@ -509,7 +509,8 @@ boards | Work Well | Untest | Remark
 -------|-----------|--------|-------
 raspberryPi 3b | √ | |
 raspberryPi 3b+ | √ | |
-raspberryPi Zero W | | √ |
+raspberryPi Zero W | √ | |
+raspberryPi Zero | | √ |
 
 ## History
 
