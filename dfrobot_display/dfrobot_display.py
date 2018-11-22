@@ -676,7 +676,6 @@ class DFRobot_Display(PrintString):
       if self._textCursorX + ts * width > self._width:
         self._textCursorX = self._textIntervalRow
         self._textCursorY += ts * self._fonts._extensionFontsHeight + self._textIntervalCol
-      self.fillRect(self._textCursorX, self._textCursorY, self._fonts._extensionFontsWidth * ts, self._fonts._extensionFontsHeight * ts, self._textBackground)
       self.bitmap(self._textCursorX, self._textCursorY, l, width, height, self._textColor, self._textBackground)
       self._textCursorX += ts * width
       self._bitmapSize = temp1

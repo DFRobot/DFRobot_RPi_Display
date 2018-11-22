@@ -18,6 +18,7 @@ class PrintString:
         c = str(c)
       except:
         return
+    self._clearTextArea(len(c))
     for i in c:
       self.writeOneChar(i)
 
