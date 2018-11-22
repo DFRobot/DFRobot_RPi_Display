@@ -47,7 +47,9 @@ pinOut.setOut(GPIO.HIGH)
 epaper = dfrobot_epaper.DFRobot_Epaper_SPI(RASPBERRY_SPI_BUS, RASPBERRY_SPI_DEV, RASPBERRY_PIN_CS, RASPBERRY_PIN_CD, RASPBERRY_PIN_BUSY) # create epaper object
 
 # config extension fonts
-epaper.setExFonts(Freetype_Helper(fontFilePath)) # init with fonts file
+ft = Freetype_Helper(fontFilePath)
+ft.setDisLowerLimite(96) # set display lower limite, adjust this to effect fonts color depth
+epaper.setExFonts(ft) # init with fonts file
 epaper.setExFontsFmt(32, 32) # set extension fonts width and height
 
 keyALock = threading.Lock() # key A threading lock

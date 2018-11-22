@@ -424,9 +424,9 @@ class DFRobot_Display:
   
   '''
     print object with new line
-    @param c        object, if c is number, num can set to format
+    @param c        string
   '''
-  def printStrLn(self, c, num = DEC):
+  def printStrLn(self, c):
   
   '''
     set default alphabet enable or disable
@@ -486,6 +486,12 @@ class Freetype_Helper:
            height       height
   '''
   def setFmt(self, width, height):
+  
+  '''
+    set fonts display lower limite, adjust this to effect fonts color depth
+    @param limite       0 <= limite <= 255
+  '''
+  def setDisLowerLimite(self, limite):
   
   '''
     get one font

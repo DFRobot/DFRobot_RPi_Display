@@ -180,9 +180,6 @@ class DFRobot_Display(PrintString):
 
   def setExFonts(self, obj):
     self._fonts.setExFonts(obj)
-
-  def setExFontsFmt(self, width, height):
-    self._fonts.setExFontsFmt(width, height)
     
   def setEnableDefaultFonts(self, opt):
     self._fonts.setEnableDefaultFonts(opt)
@@ -647,6 +644,20 @@ class DFRobot_Display(PrintString):
         self.endDrawBitmapFile()
     else:
       print("dont support this bitmap file format yet")
+
+  def _clearTextArea(self, length):
+    width = length * self._fonts._extensionFontsWidth * self._textSize
+    tx = self._textCursorX
+    ty = self._textCursorY
+    while width > 0:
+      if width > self._width:
+        self.fillRect(tx, ty, self._width, self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol, self._textBackground)
+        width -= self._width
+        ty += self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol
+        tx = 0
+      else:
+        self.fillRect(tx, ty, width, self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol, self._textBackground)
+        width -= width
 
   def writeOneChar(self, c):
     if len(c) > 1:

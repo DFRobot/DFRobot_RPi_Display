@@ -13,11 +13,15 @@ class Freetype_Helper:
     self._face = freetype.Face(filePath)
     self._width = 0
     self._height = 0
+    self._fade = 96
 
   def setFmt(self, width, height):
     self._width = int(width)
     self._height = int(height)
     self._face.set_pixel_sizes(width, height)
+  
+  def setDisLowerLimite(self, limite):
+    self._fade = fade
 
   def getOne(self, ch):
     self._face.load_char(ch)
@@ -43,7 +47,7 @@ class Freetype_Helper:
     for i in range(h):
       temp = [0] * oneLineDataLen
       for j in range(width):
-        if buffer[i * width + j] > 96:
+        if buffer[i * width + j] > self._fade:
           needAdd = True
           temp[j // 8] |= 0x80 >> (j % 8)
       if needAdd:
