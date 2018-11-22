@@ -21,7 +21,7 @@ class Freetype_Helper:
     self._face.set_pixel_sizes(width, height)
   
   def setDisLowerLimite(self, limite):
-    self._fade = fade
+    self._fade = limite
 
   def getOne(self, ch):
     self._face.load_char(ch)

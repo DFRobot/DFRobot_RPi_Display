@@ -180,6 +180,9 @@ class DFRobot_Display(PrintString):
 
   def setExFonts(self, obj):
     self._fonts.setExFonts(obj)
+
+  def setExFontsFmt(self, width, height):
+    self._fonts.setExFontsFmt(width, height)
     
   def setEnableDefaultFonts(self, opt):
     self._fonts.setEnableDefaultFonts(opt)
