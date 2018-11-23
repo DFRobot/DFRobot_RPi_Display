@@ -51,6 +51,6 @@ epaper.roundRect(130, 60, 40, 40, 10, epaper.BLACK)
 epaper.fillRoundRect(140, 70, 20, 20, 5, epaper.BLACK)
 
 epaper.triangle(210, 20, 190, 100, 230, 100, epaper.BLACK)
-epaper.fillTriangle(210, 30, 200, 90, 220, 90, epaper.BLACK)
+epaper.fillTriangle(210, 40, 200, 90, 220, 90, epaper.BLACK)
 
 epaper.flush(epaper.PART)
