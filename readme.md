@@ -154,16 +154,6 @@ class DFRobot_Display:
   PURPLE = PURPLE16
   TEAL = TEAL16
 
-  BITMAP_TBMLLR = "TBMLLR"  # scan with row, top to bottom, msb to left, lsb to right
-  BITMAP_TBMRLL = "TBMRLL"  # scan with row, top to bottom, msb to right, lsb to left
-  BITMAP_BTMLLR = "BTMLLR"  # scan with row, bottom to top, msb to left, lsb to right
-  BITMAP_BTMRLL = "BTMRLL"  # scan with row, bottom to top, msb to right, lsb to left
-  BITMAP_LRMTLB = "LRMTLB"  # scan with column, left to right, msb to top, lsb to bottom
-  BITMAP_LRMBLT = "LRMBLT"  # scan with column, left to right, msb to bottom, lsb to top
-  BITMAP_RLMTLB = "RLMTLB"  # scan with column, right to left, msb to top, lsb to bottom
-  BIMTAP_RLMBLT = "RLMBLT"  # scan with column, right to left, msb to bottom, lsb to top
-  BITMAP_UNKNOW = "UNKNOW"  # unknow bitmap scan type
-
   '''
     init class
     @param width        screen width
@@ -213,6 +203,16 @@ class DFRobot_Display:
   '''
   def setBitmapSize(self, size):
 
+  BITMAP_TBMLLR = "TBMLLR"  # scan with row, top to bottom, msb to left, lsb to right
+  BITMAP_TBMRLL = "TBMRLL"  # scan with row, top to bottom, msb to right, lsb to left
+  BITMAP_BTMLLR = "BTMLLR"  # scan with row, bottom to top, msb to left, lsb to right
+  BITMAP_BTMRLL = "BTMRLL"  # scan with row, bottom to top, msb to right, lsb to left
+  BITMAP_LRMTLB = "LRMTLB"  # scan with column, left to right, msb to top, lsb to bottom
+  BITMAP_LRMBLT = "LRMBLT"  # scan with column, left to right, msb to bottom, lsb to top
+  BITMAP_RLMTLB = "RLMTLB"  # scan with column, right to left, msb to top, lsb to bottom
+  BIMTAP_RLMBLT = "RLMBLT"  # scan with column, right to left, msb to bottom, lsb to top
+  BITMAP_UNKNOW = "UNKNOW"  # unknow bitmap scan type
+  
   '''
     set bitmap format
     @param fmt        bitmap fmt, optional: BITMAP_XXXXXX
@@ -404,17 +404,6 @@ class DFRobot_Display:
            path     file path(support bitcounts: 1, 24)
   '''
   def bitmapFile(self, x, y, path):
-  
-  '''
-    print one char on screen
-    @param c        char that will be print
-  '''
-  def writeOneChar(self, c):
-  
-  BIN = bin
-  OCT = oct
-  DEC = lambda x : str(x)
-  HEX = hex
 
   '''
     print object
