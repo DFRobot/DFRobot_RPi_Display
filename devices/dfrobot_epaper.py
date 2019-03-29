@@ -45,6 +45,7 @@ class DFRobot_Epaper(DFRobot_Display):
     self._busyExitEdge = GPIO.RISING
     
     self._fonts.setFontsABC(fonts_ABC)
+    self.setExFontsFmt(16, 16)
 
   def _busyCB(self, channel):
     self._isBusy = False
@@ -138,7 +139,7 @@ class DFRobot_Epaper(DFRobot_Display):
       time.sleep(0.01)
       temp = temp + 1
       if (temp % 200) == 0:
-        print("_waitBusyExit")
+        print("waitBusyExit")
 
   def _powerOn(self):
     self.writeCmdAndData(0x22, [0xc0])

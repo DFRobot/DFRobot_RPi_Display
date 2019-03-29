@@ -11,13 +11,12 @@ class PrintString:
     pass
 
   def printStr(self, c):
+    try:
+      c = str(c)
+    except:
+      return
     if sys.version_info.major == 2:
       c = c.decode("utf-8")
-    else:
-      try:
-        c = str(c)
-      except:
-        return
     self._clearTextArea(len(c))
     for i in c:
       self.writeOneChar(i)
