@@ -6,6 +6,10 @@ depends: freetype-py
 
 import freetype
 import math
+import sys
+
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class Freetype_Helper:
 
@@ -30,26 +34,45 @@ class Freetype_Helper:
     width = bitmap.width
     height = bitmap.rows
     buffer = bitmap.buffer
-    oneLineDataLen = (width - 1) // 8 + 1
     rslt = []
-    heightOffset = 0
-    needAdd = False
-    if (ord(ch) >= ord(" ") and ord(ch) <= ord("~")) or height < (self._height // 2):
-      # heightOffset = math.floor(self._height * 4 / 5) - originY
-      heightOffset = int((self._height * 8 + 5) // 10) - originY
-      if heightOffset < 0:
-        heightOffset = 0
-      rslt += [0] * oneLineDataLen * heightOffset
-      needAdd = True
-    h = self._height
-    if h > height:
-      h = height
-    for i in range(h):
-      temp = [0] * oneLineDataLen
+
+    # width = 4
+    # height = 4
+    # buffer = [0xff] * width * height
+
+    if height > self._height:
+      buffer = buffer[0: width * self._height]
+      height = self._height
+    if width > self._width:
+      for i in range(height):
+        rslt += buffer[i * width: i * width + self._width]
+      width = self._width
+      buffer = rslt
+      rslt = []
+    if (ord(ch) >= ord(" ") and ord(ch) <= ord("~")) or width <= (self._width // 2):
+      rslt = [0] * (((self._width - 1) // 16 + 1) * self._height + 1)
+      left = (self._width // 2 - width) // 2
+      lineDataLen = (self._width - 1) // 16 + 1
+    else:
+      rslt = [0] * (((self._width - 1) // 8 + 1) * self._height + 1)
+      left = (self._width - width) // 2
+      lineDataLen = (self._width - 1) // 8 + 1
+    if left < 0:
+      left = 0
+    # top = (self._height - height) * lineDataLen // 2
+    top = ((self._height * 8 + 5) // 10 - originY) * lineDataLen
+    if top < 0:
+      top = 0
+    for i in range(height):
       for j in range(width):
         if buffer[i * width + j] > self._fade:
-          needAdd = True
-          temp[j // 8] |= 0x80 >> (j % 8)
-      if needAdd:
-        rslt += temp
-    return (rslt, width, h + heightOffset, "TBMLLR")
+          try:
+            rslt[i * lineDataLen + (j + left) // 8 + top] |= 0x80 >> ((j + left) % 8)
+          except:
+            print("freetype_helper getOne err: width: %d, height: %d, top: %d, left: %d, rslt_len: %d, originY: %d" %(width, height, top, left, len(rslt), originY))
+            raise("err")
+          # rslt[i * lineDataLen + (j + left) // 8 + top] |= 0x80 >> ((j + left) % 8)
+    if (ord(ch) >= ord(" ") and ord(ch) <= ord("~")) or width < (self._width // 2):
+      return (rslt, self._width // 2, self._height, "TBMLLR")
+    else:
+      return (rslt, self._width, self._height, "TBMLLR")

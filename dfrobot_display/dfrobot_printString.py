@@ -17,7 +17,6 @@ class PrintString:
       return
     if sys.version_info.major == 2:
       c = c.decode("utf-8")
-    self._clearTextArea(len(c))
     for i in c:
       self.writeOneChar(i)
 

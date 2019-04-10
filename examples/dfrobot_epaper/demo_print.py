@@ -39,7 +39,7 @@ time.sleep(1)
 
 # config extension fonts
 ft = Freetype_Helper(fontFilePath)
-ft.setDisLowerLimite(96) # set display lower limite, adjust this to effect fonts color depth
+ft.setDisLowerLimite(112) # set display lower limit, adjust this to effect fonts color depth
 epaper.setExFonts(ft) # init with fonts file
 epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 1, 1)
 

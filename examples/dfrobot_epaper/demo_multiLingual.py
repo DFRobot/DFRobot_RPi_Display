@@ -41,7 +41,7 @@ time.sleep(1)
 ft = Freetype_Helper(fontFilePath)
 ft.setDisLowerLimite(96) # set display lower limite, adjust this to effect fonts color depth
 epaper.setExFonts(ft) # init with fonts file
-epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 6)
+epaper.setTextFormat(1, epaper.BLACK, epaper.WHITE, 2, 2)
 epaper.setExFontsFmt(24, 24) # set extension fonts width and height
 
 epaper.clear(epaper.WHITE)

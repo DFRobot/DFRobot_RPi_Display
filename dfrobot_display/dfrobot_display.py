@@ -97,7 +97,7 @@ class DFRobot_Display(PrintString):
     self._textBackground = self.WHITE
     self._textCursorX = 0
     self._textCursorY = 0
-    self._textIntervalRow = 2
+    self._textIntervalRow = 0
     self._textIntervalCol = 0
 
   def _ternaryExpression(self, condition, o1, o2):
@@ -648,41 +648,26 @@ class DFRobot_Display(PrintString):
     else:
       print("dont support this bitmap file format yet")
 
-  def _clearTextArea(self, length):
-    width = length * self._fonts._extensionFontsWidth * self._textSize
-    tx = self._textCursorX
-    ty = self._textCursorY
-    while width > 0:
-      if width > self._width:
-        self.fillRect(tx, ty, self._width, self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol, self._textBackground)
-        width -= self._width
-        ty += self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol
-        tx = 0
-      else:
-        self.fillRect(tx, ty, width, self._fonts._extensionFontsHeight * self._textSize + self._textIntervalCol, self._textBackground)
-        width -= width
-
   def writeOneChar(self, c):
     if len(c) > 1:
       c = c[0]
     (l, width, height, fmt) = self._fonts.getOneCharacter(c)
-    temp = self._bitmapFmt
+    temp = self._bmpFmt
     self._bmpFmt = fmt
     ts = self._textSize
-    if len(l):
+    if ord(c) == ord("\n"):
+      self._textCursorX = 0
+      self._textCursorY += height * ts + self._textIntervalCol
+    elif len(l):
       temp1 = self._bitmapSize
       self._bitmapSize = ts
       self._textCursorX += self._textIntervalRow
       if self._textCursorX + ts * width > self._width:
+        self.fillRect(self._textCursorX, self._textCursorY, self._width - self._textCursorX, self._fonts._extensionFontsHeight * ts + self._textIntervalCol, self._textBackground)
         self._textCursorX = self._textIntervalRow
         self._textCursorY += ts * self._fonts._extensionFontsHeight + self._textIntervalCol
+      self.fillRect(self._textCursorX, self._textCursorY, self._fonts._extensionFontsWidth * ts + self._textIntervalRow, self._fonts._extensionFontsHeight * ts + self._textIntervalCol, self._textBackground)
       self.bitmap(self._textCursorX, self._textCursorY, l, width, height, self._textColor, self._textBackground)
       self._textCursorX += ts * width
       self._bitmapSize = temp1
-    else:
-      if ord(c) == ord("\n"):
-        self._textCursorX = 0
-        self._textCursorY += height * ts + self._textIntervalCol
-      elif ord(c) == ord(" "):
-        self._textCursorX += self._fonts._extensionFontsWidth // 2 + self._textIntervalRow
-    self._bitmapFmt = temp
+    self._bmpFmt = temp
